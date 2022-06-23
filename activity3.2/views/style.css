@@ -1,5 +1,14 @@
-
-
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+    background-color: lightblue;
+  }
+.nav-item{
+  list-style-type: none; 
+  padding: 0.2rem; 
+  margin: 0.2rem; 
+}
 
 h1 {
     text-align: center;
@@ -7,27 +16,21 @@ h1 {
   }
 .images{
   display: flex;
-  padding: 3rem;
-  margin: 3rem;
+  padding: 1rem;
+  margin: 1rem;
   justify-items: center;
   justify-content: center;
   justify-self: center;
   }
+  .article{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 3rem;
+    margin: 3rem;
+    text-align: justify;
+  }
 
-
-.nav-item{
-    list-style-type: none; 
-    padding: 1rem; 
-    margin: 1rem; 
-}
 .foot{
     background-color: grey;
 }
-.article{
-  padding: 3rem;
-  margin: 3rem;
-  text-align: justify;
-}
-body {
-    background-color: lightblue;
-  }
