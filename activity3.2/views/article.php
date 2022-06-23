@@ -15,10 +15,15 @@ include 'header.php';
 
 
 <h2>Les 3 derniers acticles sont :</h2>
-<?php 
-include 'index.php';
-?>
 
+<?php foreach($artis as $art):?>
+    
+        <h2> Titre : <?php echo $art['titre'] ?></h2>
+        <h4> Par :<?php echo $art['auteur'] ?></h4>
+        <h6> Le <?php echo  $art['date_publication'] ?></h6>
+        <p><?php echo $art['texte'] ?></p>
+        <a  class="btn btn-danger" href="delete_post.php?id=<?php echo $art['id']?>">Supprimer</a>
+<?php endforeach ?>
 </body>
  
         <?php
