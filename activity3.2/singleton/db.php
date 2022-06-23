@@ -4,7 +4,7 @@ class Database implements Singleton {
     private $db;
 
     private function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=database;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;dbname=emnadatabase;charset=utf8', 'root', '');
     }
 
     public static function getInstance() {

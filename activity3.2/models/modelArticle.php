@@ -19,7 +19,7 @@
         public function getDb(){
             try
             {
-                $db = new PDO('mysql:host=localhost;dbname=database;charset=utf8', 'root', '');
+                $db = new PDO('mysql:host=localhost;dbname=emnadatabase;charset=utf8', 'root', '');
             }
             catch (Exception $e)
             {
