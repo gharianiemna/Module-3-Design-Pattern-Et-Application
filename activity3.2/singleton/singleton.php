@@ -1,47 +1,47 @@
 <?php
 
-class ConnectDb {
-    // Hold the class instance.
-    private static $instance = null;
-    private $conn;
+// class ConnectDb {
+//     // Hold the class instance.
+//     // private static $instance = null;
+//     public static $conn;
     
   
-    // The db connection is established in the private constructor.
-    private function __construct()
-    {
-        $this->conn = $this->getDb();
+//     // The db connection is established in the private constructor.
+//     public function __construct()
+//     {
+//       self::$conn = $this->getDb();
 
-    }
-    // Magic method clone is empty to prevent duplication of connection
-    private function __clone(){}
+//     }
+//     // Magic method clone is empty to prevent duplication of connection
+//     private function __clone(){}
 
-    private function getDb(){
-        try
-        {
-            $conn = new PDO('mysql:host=localhost;dbname=emnadatabase;charset=utf8', 'root', '');
-        }
-        catch (Exception $e)
-        {
-            die('Erreur : ' . $e->getMessage());
-        } 
-        return $conn;
-    }
+//     private function getDb(){
+//         try
+//         {
+//             $conn = new PDO('mysql:host=localhost;dbname=emnadatabase;charset=utf8', 'root', '');
+//         }
+//         catch (Exception $e)
+//         {
+//             die('Erreur : ' . $e->getMessage());
+//         } 
+//         return $conn;
+//     }
 
 
-    public static function getInstance()
-    {
-      if(!self::$instance)
-      {
-        self::$instance = new ConnectDb();
-      }
+//     public static function getInstance()
+//     {
+//       if(!self::$conn)
+//       {
+//         self::$conn = new ConnectDb();
+//       }
      
-      return self::$instance;
-    }
+//       return self::$conn;
+//     }
     
-    public function getConnection()
-    {
-      return $this->conn;
-    }
-  }
+//     public function getConnection()
+//     {
+//       return $this->conn;
+//     }
+//   }
   
 
