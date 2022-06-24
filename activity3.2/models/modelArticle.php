@@ -44,12 +44,12 @@ public function getDb(){
               'date_publication' => $date_publication, 
           ]);
           }
-          
+    // SINGLETON      
 public static function getDbSing(){
             if (is_null(self::$conn)) {
                 try
                 {
-                    self::$conn = new PDO('mysql:host=localhost;dbname=database;charset=utf8', 'root', '');
+                    self::$conn = new PDO('mysql:host=localhost;dbname=emnadatabase;charset=utf8', 'root', '');
                 }
                 catch (Exception $e)
                 { 

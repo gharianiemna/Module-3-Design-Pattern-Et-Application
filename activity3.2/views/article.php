@@ -14,7 +14,7 @@ include 'header.php';
 
 
 <div class="article"> 
-<h2>Les 3 derniers acticles sont :</h2>
+<h2>Les acticles sont :</h2>
 
 <?php foreach($artis as $art):?>
 
