@@ -8,10 +8,14 @@ class Monstre extends Carte implements DamageableInterface{
 
     public function __construct(){
         parent::__construct();
-        $this->ptsVie = rand(1,10);   
+        $this->ptsVie = getPtsVie();   
     }
 
     public function getPtsVie(){
+        $this->ptsVieStatement=self::$db->prepare('SELECT vie FROM cartessort WHERE id= rand(1,10)');
+        $ptsVieStatement->execute();
+        $vie = $ptsVieStatement->fetchAll();
+        $this->ptsVie = $vie;
         return $this->ptsVie;
     }
 
