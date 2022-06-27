@@ -1,19 +1,43 @@
 <?php
 
+
 include('monstre.php');
 include('sort.php');
 
 class Joueur {
+    public array $joueur_data;
+    public int $id_joueur ;
     public string $pseudo;
-    public int $ptsVie = 30;
-    public int $ptsMana = 10;
+    public int $ptsVie ;
+    public int $ptsMana;
+    public int $user_id ;
     private array $monstresPlace = array();
     public array $main = array();
 
-    public function __construct($pseudo){
-        $this->pseudo = $pseudo;
+    public function __construct(){
+        $this->joueur_data = $this->getJoueur();
+        $this->id_joueur = $this->getJoueur();
+        $this->pseudo = $this->getJoueur();
+        $this->ptsVie = $this->getJoueur();
+        $this->ptsMana = $this->getJoueur();
     }
 
+    
+    public function getJoueur($id){
+        $joueurStatement = self::$db->prepare('SELECT id, ptsVie, CoutMana, user_id, pseudo FROM Joueur where id = :id');
+        $joueurStatement->execute([
+            'id'=>$id
+        ]);
+        $joueurs = $joueurStatement->fetchAll();
+        $this->joueur_data = $joueurs;
+        $this->id_joueur = $this->joueur_data[0];
+        $this->ptsVie = $this->joueur_data[1];
+        $this->ptsMana = $this->joueur_data[2];
+        $this ->user_id =  $this->joueur_data[3];
+        $this->pseudo = $this->joueur_data[4];
+        return $this->joueur_data;
+    }
+    
     public function montrerMain(){
         $str='';
         foreach($this->main as $key => $value){
@@ -72,18 +96,35 @@ class Joueur {
         // }
         return 'Joueur : '. $this->pseudo .PHP_EOL. 'Pts Vie:' . $this->ptsVie . PHP_EOL. 'Pts Mana :'. $this->ptsMana .PHP_EOL. $str;
     }
+
+    
+    // public function getJoueur()
+    // {
+    //     $joueur_id = int;
+    //     $user_id = int;
+    //    // Une table stocke les users, et une table stocke les joueurs.
+    //    //La table joueurs contient entre-autres un champ "idx_user", 
+    //    //qui contient l'id correspondant au user qui devient joueur.
+
+    //     $q = self::$db->query('SELECT * FROM joueur JOIN userdata on id_user = idx_user');
+         
+    //     while ($data = $q->fetch())
+    //     {
+    //         $id_user = new joueur($data);
+             
+    //         if (!isset($user_id['id_user']))
+    //         {
+    //             $user_id[$data['id_user']] = new joueur($data);
+    //         }
+             
+    //         $news->setJoueur($user_id[$data['id_user']]);
+    //     }
+         
+    //     return $news;
+    // }
 }
 
 
-// $kenza = new Joueur('kenza');
-// $habib = new Joueur('habib');
-// $kenza->piocher();
-// $kenza->piocher();
-// $kenza->piocher();
-// $kenza->piocher();
-// print_r($kenza->montrerMain());
-// $kenza->jouer($habib,1);
-// print_r($kenza);
 
 
 
