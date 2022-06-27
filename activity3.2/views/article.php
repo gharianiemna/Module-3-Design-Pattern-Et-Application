@@ -49,7 +49,7 @@ include 'header.php';
   
   </div>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Author</label>
+    <label for="exampleInputEmail1" class="form-label">pseudo</label>
     <input type="texte" name ='auteur' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width:50%;">
  
   </div>

@@ -7,8 +7,3 @@ class Sort extends Carte{
     }
 }
 
-// $sort = new Sort(2,8);
-// $monstre = new Monstre(4,6,2);
-// echo $monstre->getPtsVie().PHP_EOL;
-// $sort->attaquer($monstre);
-// echo $monstre->getPtsVie();

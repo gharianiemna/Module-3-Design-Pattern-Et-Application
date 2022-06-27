@@ -1,0 +1,1 @@
+to get to the table page please open the following file: hearthstone-web-v2/hearthstone-web/Controller/JoueurController.php

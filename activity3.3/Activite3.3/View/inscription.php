@@ -1,86 +1,35 @@
-<<<<<<< HEAD
-<?php
-    session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-</head>
+<?php 
 
-<body>
+if ( isset($_POST['signup'])) {
+    try
+{
+    // on va inserer dans la base de donnée dans le tableau, dans les colonnes les values qui sont les valeurs ecrite par utilisateur
+    $sqlQuery = 'INSERT INTO user(mail,login,password) VALUES (:mail,:login, :password)';
+    
+    $insertUser= $db->prepare($sqlQuery);
+    $hashed_password=password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $insertUser->execute([
+        'login' => $_POST['login'],
+       
+        'mail' => $_POST['mail'],
+        'Password' => $hashed_password,
+        ]);
+        // to direct the inscription page to the profile page after signup
+        $user_signup = [
+          'Name' => $_POST['name'],
 
+          'mail' => $_POST['mail'],
+          'Password' => $hashed_password,
+        ];
+       
+}
 
-<form class ='wrapper'  method="post" action="connexion.php">
-<div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Login</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?php echo $_COOKIE['login_connexion']  ?>" >
-   
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?php echo $_COOKIE['identifiant_connexion']  ?>" >
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="password" value= "<?php echo $_COOKIE['password_connexion']  ?>">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1"  name='se_souvenir_de_moi'>
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary" name='submitSignIn'>Submit</button>
-</form>
+catch (Exception $e)
+{
+    die('Erreur : ' . $e->getMessage());
+}
+}
 
-</body>
-=======
-<?php
-    session_start();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-</head>
-
-<body>
-
-
-<form class ='wrapper'  method="post" action="connexion.php">
-<div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Name</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?php echo $_COOKIE['identifiant_connexion']  ?>" >
-   
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?php echo $_COOKIE['identifiant_connexion']  ?>" >
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="password" value= "<?php echo $_COOKIE['password_connexion']  ?>">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1"  name='se_souvenir_de_moi'>
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary" name='submitSignIn'>Submit</button>
-</form>
-
-</body>
->>>>>>> e25684a29d7aed9310d5dff65b109a913420fd61
-</html>
+    ?>
+    

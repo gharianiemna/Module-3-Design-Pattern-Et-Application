@@ -12,13 +12,13 @@ class  Database {
         if (is_null(self::$db)) {
             try
             {
-                self::$db = new PDO('mysql:host=localhost;dbname=hearthstone;charset=utf8', 'root', '');
+                self::$db  = new PDO('mysql:host=localhost;dbname=hearthstone;charset=utf8', 'root', '');
             }
             catch (Exception $e)
             { 
                 die('Erreur : ' . $e->getMessage());
             }
         }
-        return self::$db;
+        return  self::$db ;
     }
 }

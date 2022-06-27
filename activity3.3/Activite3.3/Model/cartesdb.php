@@ -1,38 +1,57 @@
+
 <?php
 
-abstract class Carte {
-    public $cartedb;
+include_once ('connectdb.php');
+
+class Carte extends Database {
     protected int $coutMana;
     protected int $ptsDegats;
 
-    function __construct(){
-        $this->coutMana =$this->getCoutmana();
-        $this->ptsDegats = $this->getPtsDegats();
+    public function __construct(){
+
+        self::$db = self::connectDB();
+
+        $carte = $this->getCarte();
+
+       
+
+        $this->coutMana = $carte['mana'];
+
+        $this->ptsDegats = $carte['degat'];
+
+
+
     }
 
 
-    function getCoutmana(){
-        $this->coutManaStatement=self::$db->prepare('SELECT mana FROM cartessort WHERE id= rand(1,10)');
-        $coutManaStatement->execute();
-        $manas = $coutManaStatement->fetchAll();
-        $this->coutMana = $manas;
+
+    public function getCarte(){
+
+        $n = rand(0,10);
+
+        $carteStatement = self::$db->prepare('SELECT * FROM cartessort WHERE id=:id');
+
+
+        $carteStatement->execute([
+            'id'=> $n
+        ]);
+
+        return  $carteStatement->fetch();
+
+    }
+
+
+
+    public function getCoutMana(){
+
         return $this->coutMana;
+        
     }
 
-    function getPtsDegats(){
-        $this->ptsDegatsStatement=self::$db->prepare('SELECT degat FROM cartessort WHERE id= rand(1,10)');
-        $ptsDegatsStatement>execute();
-        $Degats = $ptsDegatsStatement->fetchAll();
-        $this->ptsDegats = $Degats;
+
+
+    public function getPtsDegats(){
+
         return $this->ptsDegats;
-    }
 
-    function getCartes(){
-        $cartesStatement = self::$db->prepare('SELECT * FROM cartessort');
-        $cartesStatement->execute();
-        $cartes = $cartesStatement->fetchAll();
-        $this->cartedb = $cartes;
-        return $this->cartedb;
-    }
-
-}
+    }}

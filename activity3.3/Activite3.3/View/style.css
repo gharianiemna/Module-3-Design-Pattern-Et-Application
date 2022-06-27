@@ -1,4 +1,24 @@
-body{
-    background-image: url("https://static2.srcdn.com/wordpress/wp-content/uploads/2020/11/Hearthstone-Duels-Early-Access-Preview.jpg");
-    opacity:0.2;
+.home{
+    background-image: url("https://wallpapercave.com/wp/wp1843571.jpg");
+    background-size: 1600px 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
 }
+.cartes{ display: flex;
+    flex-direction: row;
+    justify-content: space-between;}
+h2{
+    color: aliceblue !important;
+    font-size: 50px !important;
+    font-family: 'The Nautigal', cursive !important;
+}
+h6{
+    background-size: 50px 20px;
+    background-color: aliceblue;
+color: aliceblue;
+ 
+}
+.piocher{align-self: center;}
