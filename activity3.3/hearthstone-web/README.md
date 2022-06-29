@@ -1,6 +1,6 @@
 # hearthstone-web-v1
 
-repo de Emna et Rania et Samar
+repo de Emna et Rania 
 Jeu Hearthstone
 
 ## Getting started

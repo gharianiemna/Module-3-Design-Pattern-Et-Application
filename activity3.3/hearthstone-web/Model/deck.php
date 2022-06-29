@@ -1,10 +1,11 @@
 <?php 
-
+include('connectdb.php');
 class Deck extends Database{
     public $deck ;
     public function __construct()
     {   parent::__construct();
         $this->deck =$this->setDeck();
+      
     }
 
     public function setDeck(){

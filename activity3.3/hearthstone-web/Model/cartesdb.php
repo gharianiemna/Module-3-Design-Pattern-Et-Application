@@ -13,7 +13,7 @@ class Carte extends Database {
 
         $carte = $this->getCarte();
 
-       
+        // echo($carte);
 
         $this->coutMana = $carte['mana'];
 
@@ -27,7 +27,7 @@ class Carte extends Database {
 
     public function getCarte(){
 
-        $n = rand(0,10);
+        $n = rand(1,10);
 
         $carteStatement = self::$db->prepare('SELECT * FROM cartessort WHERE id=:id');
 
@@ -45,7 +45,7 @@ class Carte extends Database {
     public function getCoutMana(){
 
         return $this->coutMana;
-        
+
     }
 
 
